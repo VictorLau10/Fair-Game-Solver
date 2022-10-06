@@ -1,0 +1,27 @@
+public class MyProgram
+{
+    private static int numCards = 13;
+    private static int numHands = 0;
+    
+    public static void main(String[] args)
+    {
+        for (int a = 1; a <= numCards; a++)
+        {
+            for (int b = 1; b <= numCards; b++)
+            {
+                for (int c = 1; c <= numCards; c++)
+                {
+                    for (int d = 1; d <= numCards; d++)
+                    {
+                        if (a != b && a != c && a != d && b != c && b != d && c != d)
+                        {
+                            System.out.println("(" + a + ", " + b + ", " + c + ", " + d + ")");   
+                            numHands++;
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println(numHands);
+    }
+}
