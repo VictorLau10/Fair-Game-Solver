@@ -1,0 +1,86 @@
+public class MyProgram
+{
+    // 1  2  3  4  5  6  7  8  9  10  11  12  13
+    // Cards go from least to greatest
+    
+    // Variables
+    
+    private static int card1 = 1;
+    private static int card2 = 2;
+    private static int card3 = 3;
+    private static int card4 = 4;
+    
+    // Conditions that check the sum of two cards
+    private static int oneTwo;
+    private static int oneThree;
+    private static int twoThree;
+    
+    private static int successfulHands = 0;
+    // 13C4
+    private static int totalHands = (13 * 12 * 11 * 10) / (4 * 3 * 2 * 1);
+    
+    // Main Method
+    
+    // For every time card4 = 13, card3 + 1. Every time card3 = 13, card2 + 1, and so on ...
+    // Because the order of the cards is least to greatest, it guarantees that there are no repeated hands.
+    
+    public static void main(String[] args)
+    {
+        // Card 1
+        while (card1 <= 13 && card1 < card2)
+        {
+            // Card 2
+            while(card2 <= 13 && card2 < card3)
+            {
+                // Card 3
+                while(card3 <= 13 && card3 < card4)
+                {
+                    // Card 4
+                    while(card4 <= 13)
+                    {
+                        checkHand();
+                        card4++;
+                    }
+                    card3++;
+                    card4 = card3 + 1;
+                }
+                card2++;
+                card3 = card2 + 1;
+                card4 = card3 + 1;
+            }
+            card1++;
+            card2 = card1 + 1;
+            card3 = card2 + 1;
+            card4 = card3 + 1;
+        }
+        System.out.println("Successful Hands: " + successfulHands);
+        System.out.println("Total Hands: 13C4");
+        System.out.println("= " + totalHands);
+        System.out.println("Fraction: " + successfulHands + "/" + totalHands);
+        // Rounds the percentage two decimal places
+        System.out.println("Percentage: " + ((int) ((successfulHands / (double) totalHands) * 100)) + "%");
+    }
+    
+    // Prints out the current hand
+    public static void printHand()
+    {
+        System.out.println((successfulHands + 1) + ": (" + card1 + ", " + card2 + ", " + card3 + ", " + card4 + ")");
+        successfulHands++;
+    }
+    
+    // Checks if the current hand is a successful hand
+    public static void checkHand()
+    {
+        oneTwo = card1 + card2;
+        oneThree = card1 + card3;
+        twoThree = card2 + card3;
+        
+        if (card1 != card2 && card1 != card3 && card1 != card4 && card2 != card3 && card2 != card4 && card3 != card4)
+        {
+            if (oneTwo == card3 || oneTwo == card4 || oneThree == card4 || twoThree == card4)
+            {
+                printHand();
+            }
+        }
+    }
+}
