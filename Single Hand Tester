@@ -1,0 +1,54 @@
+public class MyProgram
+{
+    private static int card1 = 1;
+    private static int card2 = 2;
+    private static int card3 = 3;
+    private static int card4 = 6;
+    
+    private static int oneTwo;
+    private static int oneThree;
+    private static int twoThree;
+    
+    public static void main(String[] args)
+    {
+        checkHand();
+    }
+    
+    public static void checkHand()
+    {
+        oneTwo = card1 + card2;
+        oneThree = card1 + card3;
+        twoThree = card2 + card3;
+        
+        if (oneTwo == card3)
+        {
+            currentHand();
+        } 
+        else if (oneTwo == card4)
+        {
+            currentHand();
+        }
+        else if (oneThree == card4)
+        {
+            currentHand();
+        }
+        else if (twoThree == card4)
+        {
+            currentHand();
+        }
+        
+        System.out.println("");
+        System.out.println(oneTwo);
+        System.out.println(oneThree);
+        System.out.println(twoThree);
+        System.out.println("");
+        System.out.println(card3);
+        System.out.println(card4);
+        
+    }
+    
+    public static void currentHand()
+    {
+        System.out.println("(" + card1 + ", " + card2 + ", " + card3 + ", " + card4 + ")");
+    }
+}
