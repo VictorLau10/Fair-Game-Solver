@@ -1,0 +1,52 @@
+public class MyProgram
+{
+    private static int card1 = 1;
+    private static int card2 = 2;
+    private static int card3 = 3;
+    
+    private static int oneTwo;
+    private static int numCards = 13;
+    private static int successfulHands = 0;
+    private static int totalHands = (13 * 12 * 11) / (3 * 2 * 1);
+
+    public static void main(String[] args)
+    {
+        while (card1 <= numCards && card1 < card2)
+        {
+            while (card2 <= numCards && card2 < card3)
+            {
+                while (card3 <= numCards)
+                {
+                    checkHand();
+                    card3++;
+                }
+                card2++;
+                card3 = card2 + 1;
+            }
+            card1++;
+            card2 = card1 + 1;
+            card3 = card2 + 1;
+        }
+        
+        System.out.println("Successful Hands: " + successfulHands);
+        System.out.println("Total Hands: 13C3");
+        System.out.println("= " + totalHands);
+        System.out.println("Fraction: " + successfulHands + "/" + totalHands);
+        System.out.println("Percentage: " + ((int) ((successfulHands / (double) totalHands) * 100)) + "%");
+    }
+    
+    public static void checkHand()
+    {
+        oneTwo = card1 + card2;
+        if (oneTwo == card3)
+        {
+            printHand();
+        }
+    }
+    
+    public static void printHand()
+    {
+        System.out.println((successfulHands + 1) + ": (" + card1 + ", " + card2 + ", " + card3 + ")");
+        successfulHands++;
+    }
+}
